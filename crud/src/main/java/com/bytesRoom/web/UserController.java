@@ -1,23 +1,34 @@
 package com.bytesRoom.web;
 
-import com.example.demo.pojo.User;
-import com.example.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.bytesRoom.pojo.User;
+import com.bytesRoom.service.UserService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("user")
+@AllArgsConstructor
 public class UserController  {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("{id}")
+    @ResponseBody
     public User getUserById(@PathVariable("id") Integer id){
         return userService.findByQueryById(id);
     }
 
+    @GetMapping("all")
+    public String getAll(ModelMap model){
+        // 查询用户
+        List<User> users = this.userService.getAllUser();
+        // 放入模型
+        model.addAttribute("users", users);
+        // 返回模板名称（就是classpath:/templates/目录下的html文件名）
+        return "users";
+
+    }
 }

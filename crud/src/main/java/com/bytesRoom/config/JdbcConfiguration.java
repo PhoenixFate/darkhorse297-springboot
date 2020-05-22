@@ -3,7 +3,7 @@ package com.bytesRoom.config;
 import org.springframework.context.annotation.Configuration;
 
 
-@Configuration
+// @Configuration
 public class JdbcConfiguration {
 
 //    配置连接池

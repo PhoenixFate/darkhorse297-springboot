@@ -1,17 +1,18 @@
 package com.bytesRoom.service;
 
-import com.example.demo.mapper.UserMapper;
-import com.example.demo.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bytesRoom.mapper.UserMapper;
+import com.bytesRoom.pojo.User;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
+@AllArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserMapper userMapper;
-
+    private final UserMapper userMapper;
 
     public User findByQueryById(Integer id){
         return userMapper.selectByPrimaryKey(id);
@@ -20,5 +21,9 @@ public class UserService {
     @Transactional
     public void insertUser(User user){
         userMapper.insert(user);
+    }
+
+    public List<User> getAllUser(){
+        return userMapper.selectAll();
     }
 }
