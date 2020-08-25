@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+//实现该接口来添加拦截器
 public class MvcConfig implements WebMvcConfigurer {
 
     @Override

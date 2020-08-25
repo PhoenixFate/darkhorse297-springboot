@@ -24,6 +24,8 @@
         <module>first-demo</module>
         <module>http-demo</module>
         <module>crud</module>
+        <module>user-service</module>
+        <module>consumer-service</module>
     </modules>
 
 

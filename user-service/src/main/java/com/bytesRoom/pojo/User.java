@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -15,7 +15,6 @@ import java.util.Date;
 @Table(name = "sys_user")
 public class User {
 
-    //主键自增
     @KeySql(useGeneratedKeys = true)
     @Id
     private Integer userId;
@@ -25,6 +24,7 @@ public class User {
     private String salt;
     private String phone;
     private String avatar;
+    private Integer deptId;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
